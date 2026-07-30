@@ -1,8 +1,8 @@
 <p align="center">
-    <img src="https://capsule-render.vercel.app/api?type=blur&height=300&color=&color=1e1033&text=WINDOWS%20TO%20ARCH%20LINUX&fontColor=1E1033&fontAlign=50&fontSize=60&fontAlignY=50&stroke=FF4696&strokeWidth=5&textBg=false" alt="HEADER" />
+    <img src="https://capsule-render.vercel.app/api?type=blur&height=300&color=&color=FF003C&text=WINDOWS%20TO%20ARCH-LINUX&fontColor=FF003C&textBg=false&stroke=121212&strokeWidth=5&fontAlign=50&fontAlignY=50&fontSize=50&reversal=false" alt="HEADER" />
 </p>
 
-### ⚙️ `> ./tech_stack.sh`
+### `> ./tech_stack.sh`
 <p align="left">
     <img src="https://img.shields.io/badge/VIRTUALBOX-white?style=for-the-badge&logo=virtualbox&color=%232F61B4"/>
     <img src="https://img.shields.io/badge/ARCH%20LINUX-white?style=for-the-badge&logo=archlinux&logoColor=white&color=%231793D1"/>
@@ -20,7 +20,7 @@
     <img src="https://img.shields.io/badge/SYSTEMD-white?style=for-the-badge&logo=systemd&logoColor=white&color=%23001428"/>
 </p>
 
-## 📚 `> ./specifications.sh`
+## `> ./specifications.sh`
 
 ### 📓 Cahier des charges
 - Migration d'un poste Windows 11 vers une distribution Arch-based.  
@@ -51,7 +51,7 @@ Détail des configurations appliquées à chaque phase : [`configuration/`](/con
 | Git | dépôts officiels (git) | — |
 | Google Chrome | AUR (google-chrome) | — |
 
-## 🛠️ `> ./architecture.sh`
+## `> ./architecture.sh`
 
 ### 📁 Structure du dépôt
 
@@ -75,10 +75,22 @@ win-to-arch/
 
 > J'ai fait le choix de le faire sans script d'automatisation parce que EndeavourOS est une rolling release, et que la maintenance active est un prérequis. L'automatisation complète d'une rolling release est un non-sens : il faut pouvoir intervenir manuellement sur les mises à jour, vérifier les modules DKMS, vérifier les snapshots, etc.
 
-### 🤝 Décisions d'architecture
+### 🛠️ Décisions d'architecture
 
 Chaque choix ci-dessous a été tranché avec un compromis explicite. Rien n'est laissé à l'implicite.
 - **Secure Boot → désactivé.** Compromis accepté : perte de la vérification de signature au boot (surface théorique pour rootkit bootkit-level) contre suppression de la contrainte de signature MOK sur les modules DKMS à chaque update noyau. Retenu car le scénario d'attaque écarté suppose une compromission root déjà acquise.
 - **sudo → retenu face à doas.** doas documenté comme alternative valide (surface de code ~10x réduite, config minimaliste) mais écarté : pas de gain justifié pour un usage personnel hors contexte haute sécurité, au prix d'une rupture de compatibilité avec l'écosystème DevOps standard.
 - **k3s → désactivé au démarrage.** Cohabitation avec Docker sur le même hôte : risque de chevauchement de plages IP entre le bridge Docker et le CNI de k3s. Activation manuelle à la demande, jamais en tâche de fond.
 - **VirtualBox → aucune virtualisation imbriquée, à aucune phase.** En phase VM, VirtualBox est installé et son module DKMS vérifié (`CheckDKMS` = `installed`), mais aucune VM n'est démarrée à l'intérieur de la VM EndeavourOS — l'imbrication est écartée pour des raisons de fiabilité et d'isolation, sans bénéfice réel puisque ce n'est jamais l'usage final. Les labs VirtualBox (AD/DNS/DHCP/mail) ne démarrent qu'en phase 2, sous EndeavourOS en hôte direct sur la machine physique.
+
+---
+
+<p align="center">  
+    <i>↪️ Back to the hub :<a href="https://github.com/SybillLabs/sysnet-practice-labs.git"> sysnet-practice-labs</a></i> | <i>📍 From <a href="https://github.com/SybillLabs">SybillLabs</a></i>
+</p>
+
+---
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,100:0d0d0d&fontColor=FF003C&fontSize=50&height=100&width=900&text=%5BEOF%5D&section=footer"/>
+</p>
