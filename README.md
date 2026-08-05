@@ -29,13 +29,33 @@
 - Cohabitation sur le même hôte physique de la conteneurisation (DevOps) et de la virtualisation (Admin Sys/Réseaux) pour différents usages.
 
 ### 🔎 Méthodologie de travail
-Déploiement en deux phases :
-- **[Phase 1 — Installation sur machine virtuelle](/phase1.md)** : Sert uniquement à valider l'installation et la configuration système. VirtualBox est installé et vérifié à ce stade, mais aucune VM n'est démarrée à l'intérieur — la virtualisation imbriquée est délibérément écartée du périmètre.
-- **[Phase 2 — Installation sur machine physique](/phase2.md)** : Après validation de la phase 1, la migration finale s'effectue sur le poste physique.
+- **Projets en deux phases** : d'abord sur une machine virtuelle, pour tester et valider chaque installation et configuration sans risque, puis sur le poste physique une fois que la VM a validé l'ensemble des étapes.
+- **[Guide d'installation](/install_guide.md)** complet, étape par étape, inclut un chapitre dédié aux différences rencontrées entre la VM et le poste physique (hostname, Secure Boot, partitionnement, réseau).
 
-Aucun passage à la phase 2 sans checklist de validation intégralement cochée.
+**Suivi d'avancement** — une étape n'est cochée qu'une fois testée et validée en conditions réelles, pas seulement documentée :
 
-Détail des configurations appliquées à chaque phase : [`configuration/`](/configuration/).
+| Étape                    | VM | PC |
+|--------------------------|----|----|
+| EndeavourOS | ✅ | ⬜ |
+| Docker | ✅ | ⬜ |
+| Kubernetes (K3S) | ✅ | ⬜ |
+| Firewall (UFW + Fail2Ban) | ✅ | ⬜ |
+| SSH Hardening | ✅ | ⬜ |
+| Maintenance (FullUpdate + CheckDKMS + Clean) | ⬜ | ⬜ |
+| Snapshots (Timeshift + Snapper + Grub-BTRFS) | ⬜ | ⬜ |
+| Mirrors (Reflector) | ⬜ | ⬜ |
+| ZRAM (zram-generator) | ⬜ | ⬜ |
+| VS Code | ⬜ | ⬜ |
+| Terminal (Kitty) | ✅ | ⬜ |
+| VirtualBox | ⬜ | ⬜ |
+| Nmap | ⬜ | ⬜ |
+| Wireshark | ⬜ | ⬜ |
+| Navigateur (Google Chrome + OperaGX) | ✅ | ⬜ |
+| Git | ⬜ | ⬜ |
+
+
+
+Aucun passage à la phase PC sans validation intégrale de la colonne VM.
 
 ### 🖥️ Application et logiciel retenue
 | Logiciel | Source | Remarque |
@@ -50,6 +70,7 @@ Détail des configurations appliquées à chaque phase : [`configuration/`](/con
 | SSH | dépôts officiels (openssh) | — |
 | Git | dépôts officiels (git) | — |
 | Google Chrome | AUR (google-chrome) | — |
+| OperaGx | AUR (opera-gx) | — |
 
 ## `> ./architecture.sh`
 
@@ -58,10 +79,9 @@ Détail des configurations appliquées à chaque phase : [`configuration/`](/con
 ```
 win-to-arch/
 ├── README.md                       # ce document
-├── phase1.md                       # documentation de la phase 1 (VM) avec validation de l'installation et de la configuration système
-├── phase2.md                       # documentation de la phase 2 (PC) avec validation de l'installation et de la configuration système
+├── install_guide.md                # guide d'installation complet, étape par étape
 └── configuration/                  
-    ├── maintenance.md              # alias FullUpdate / CHeckDKMS / Clean
+    ├── maintenance.md              # alias FullUpdate / CheckDKMS / Clean
     ├── mirrors.md                  # reflector, sélection des miroirs pacman
     ├── snapshots.md                # timeshift + snapper + grub-btrfs
     ├── zram.md                     # zram-generator, gestion mémoire

@@ -121,11 +121,11 @@ sudo systemctl status k3s
 ---
 
 <p align="center">  
-    <i>➡️ Back to <a href="/phase1.md"> Phase 1</a> - Installation sur machine virtuelle</i>
+    <i>➡️ Back to :<a href="/install_guide.md"> Guide d'installation</a></i>
 </p>
 
 <p align="center">  
-    <i>➡️ Back to <a href="/phase2.md"> Phase 2</a> - Installation sur machine physique</i>
+    <i>➡️ Back to :<a href="/README.md"> README</a></i>
 </p>
 
 ---
