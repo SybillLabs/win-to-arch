@@ -37,25 +37,23 @@
 | Étape                    | VM | PC |
 |--------------------------|----|----|
 | EndeavourOS | ✅ | ⬜ |
-| Docker | ✅ | ⬜ |
-| Kubernetes (K3S) | ✅ | ⬜ |
-| Firewall (UFW + Fail2Ban) | ✅ | ⬜ |
-| SSH Hardening | ✅ | ⬜ |
-| Maintenance (FullUpdate + CheckDKMS + Clean) | ⬜ | ⬜ |
-| Snapshots (Timeshift + Snapper + Grub-BTRFS) | ⬜ | ⬜ |
+| Terminal (Kitty) | ✅ | ⬜ |
+| Navigateur (Google Chrome + OperaGX) | ✅ | ⬜ |
 | Mirrors (Reflector) | ⬜ | ⬜ |
 | ZRAM (zram-generator) | ⬜ | ⬜ |
+| Maintenance (FullUpdate + CheckDKMS + Clean) | ⬜ | ⬜ |
+| Snapshots (Timeshift + Snapper + Grub-BTRFS) | ⬜ | ⬜ |
+| SSH Installation | ⬜ | ⬜ |
+| Firewall (UFW + Fail2Ban) | ⬜ | ⬜ |
+| Docker | ⬜ | ⬜ |
+| Kubernetes (K3S) | ⬜ | ⬜ |
 | VS Code | ⬜ | ⬜ |
-| Terminal (Kitty) | ✅ | ⬜ |
 | VirtualBox | ⬜ | ⬜ |
 | Nmap | ⬜ | ⬜ |
 | Wireshark | ⬜ | ⬜ |
-| Navigateur (Google Chrome + OperaGX) | ✅ | ⬜ |
 | Git | ⬜ | ⬜ |
 
-
-
-Aucun passage à la phase PC sans validation intégrale de la colonne VM.
+> **⚠️ Aucun passage à la phase PC sans validation intégrale de la colonne VM.**
 
 ### 🖥️ Application et logiciel retenue
 | Logiciel | Source | Remarque |
@@ -80,7 +78,8 @@ Aucun passage à la phase PC sans validation intégrale de la colonne VM.
 win-to-arch/
 ├── README.md                       # ce document
 ├── install_guide.md                # guide d'installation complet, étape par étape
-└── configuration/                  
+└── configuration/
+    ├── terminal-config.md          # Kitty + Starship + fastfetch
     ├── maintenance.md              # alias FullUpdate / CheckDKMS / Clean
     ├── mirrors.md                  # reflector, sélection des miroirs pacman
     ├── snapshots.md                # timeshift + snapper + grub-btrfs
@@ -88,9 +87,7 @@ win-to-arch/
     ├── firewall.md                 # ufw, fail2ban
     ├── ssh-hardening.md            # durcissement sshd_config, clé SSH
     └── docker-k3s.md               # cohabitation Docker/k3s, k3s désactivé au boot
-└── assets/
-    ├── phase1/                     # captures d'écran de l'installation et de la configuration de la phase 1 
-    └── phase2/                     # captures d'écran de l'installation et de la configuration de la phase 2
+└── assets/                         # captures d'écran, logos, images...
 ```
 
 > J'ai fait le choix de le faire sans script d'automatisation parce que EndeavourOS est une rolling release, et que la maintenance active est un prérequis. L'automatisation complète d'une rolling release est un non-sens : il faut pouvoir intervenir manuellement sur les mises à jour, vérifier les modules DKMS, vérifier les snapshots, etc.

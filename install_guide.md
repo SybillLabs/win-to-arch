@@ -15,7 +15,7 @@ Chaque chapitre de ce guide est exécuté à l'identique sur la VM de validation
 | CPU (Coeurs) | 4 CPU | 10 CPU |
 | CPU (Threads) | 0 Threads | 16 Threads |
 | RAM | 8 Go | 32 Go |
-| Disque | 60 Go virtuel | 500 Go réel |
+| Disque | 80 Go virtuel | 500 Go réel |
 
 > Toute divergence rencontrée en dehors de ce tableau, propre à un chapitre précis, est documentée directement dans la section concernée du guide plutôt qu'ici.
 
@@ -24,8 +24,15 @@ Chaque chapitre de ce guide est exécuté à l'identique sur la VM de validation
 ISO récupérée depuis [`endeavouros.com/latest-release`](https://endeavouros.com/latest-release/).
 
 **Environnement de bureau** : 
-- KDE Plasma, **retenu** pour sa légèreté et son niveau de personnalisation, le reste du guide reste applicable avec un autre DE supporté par EndeavourOS, seule cette étape en dépend.
-- XFCE, installé en parallèle pour tester plusieurs environnements de bureau sur la même machine, et pour disposer d'une alternative légère en cas de problème avec KDE Plasma.
+- KDE Plasma, **retenu comme environnement principal** pour sa légèreté et son niveau de personnalisation, le reste du guide reste applicable avec un autre DE supporté par EndeavourOS, seule cette étape en dépend.
+- XFCE, installé en secours uniquement, pour disposer d'un environnement fonctionnel en cas de problème bloquant sur KDE Plasma, pas destiné à un usage quotidien.
+```bash
+sudo pacman -S xfce4 xfce4-goodies
+sudo pacman -S labwc
+```
+> **Remarque :**   
+- `labwc` installé pour tester une session XFCE en Wayland, qui nécessite un compositeur externe (XFCE n'en fournit pas encore nativement). Session non retenue sur cette VM : l'accélération 3D de VirtualBox reste trop limitée pour initialiser correctement le rendu, même une fois activée dans les paramètres d'affichage. Session XFCE conservée en X11, stable dans cet environnement.
+- Pour KDE Plasma, utilisation de l'environnement *Wayland* par défaut, cependant pour XFCE, l'environnement *X11* est utilisé par défaut. Le guide reste applicable dans les deux cas.
 
 **Choix faits pendant l'installation :**
 - Mise à jour des miroirs via `reflector-simple` dès le menu d'installation, avant même de lancer l'installeur, cohérent avec la démarche appliquée ensuite en post-install (`mirrors-installation.sh`).
@@ -37,11 +44,23 @@ ISO récupérée depuis [`endeavouros.com/latest-release`](https://endeavouros.c
 
 Une fois l'installation terminée : extinction de la VM, retrait de l'ISO, snapshot VirtualBox de l'état post-install avant de poursuivre.
 
-> **Remarque :** Une fois l'installation terminée, il est possible de montrer le **Welcome** avec la commande `eos-welcome --enable` ou la commande `eos-welcome --once`.
+**Choix faits après l'installation :**
+- Affichage du Welcome EndeavourOS au premier démarrage : `eos-welcome --enable` (permanent) ou `eos-welcome --once` (ponctuel).
+- Barre des tâches : translucide, centrée, éviter les fenêtres et ajuster au contenu.
+- Thèmes : personnalisé avec `Sweet KDE` (*eliverlara*) et `Sweet-Mars` (*dans le pack de Sweet KDE*) pour l'écran de démarrage. Configuration appliquée uniquement sur KDE Plasma, environnement de bureau principal, XFCE reste en configuration par défaut puisqu'il n'est utilisé qu'en secours.
+- Fond d'écran : installation de `Smart Video Wallpaper Reborn` (*luis-bocanegra*) pour disposer d'un fond d'écran animé (source en `.mp4`).
 
 ## `> ./terminal-installation.sh`
 
+- Pour cette configuration, le terminal principal retenu est **Kitty**, pour sa légèreté et sa capacité de personnalisation avancée. Il est complété par le prompt **Starship** et l'outil d'affichage système **fastfetch**.
+- Pour l'installation et la configuration de Kitty, Starship et fastfetch, voir le fichier [terminal-config.md](configuration/terminal-config.md).
+- Rendu final attendu sur le thème de **Cyberpunk** (Kitty + Starship + fastfetch).
+
 ## `> ./navigator-installation.sh`
+Opera GX, **retenu comme navigateur principal** pour ses fonctionnalités, et Google Chrome, **installé en complément** pour disposer d'un navigateur Chromium standard, notamment pour les tests de compatibilité web.
+
+- **Installation de Chrome** : `yay -S google-chrome`
+- **Installation d'OperaGX** : `yay -S opera-gx`
 
 ## `> ./mirrors-installation.sh`
 
@@ -66,8 +85,6 @@ Une fois l'installation terminée : extinction de la VM, retrait de l'ISO, snaps
 ## `> ./wireshark-installation.sh`
 
 ## `> ./git-installation.sh`
-
-## `> ./personalization.sh`
 
 ---
 
