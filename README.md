@@ -27,10 +27,11 @@
 - Contrainte non négociable : liberté totale de configuration, aucune distribution basée `Debian/Ubuntu`, jugées trop rigides malgré leur stabilité reconnue.  
 - Nécessité d'une maintenance active du système, car la distribution retenue est une rolling release.
 - Cohabitation sur le même hôte physique de la conteneurisation (DevOps) et de la virtualisation (Admin Sys/Réseaux) pour différents usages.
+- Personnalisation de l'environnement de bureau et autres éléments à la charge de l'utilisateur.
 
 ### 🔎 Méthodologie de travail
 - **Projets en deux phases** : d'abord sur une machine virtuelle, pour tester et valider chaque installation et configuration sans risque, puis sur le poste physique une fois que la VM a validé l'ensemble des étapes.
-- **[Guide d'installation](/install_guide.md)** complet, étape par étape, inclut un chapitre dédié aux différences rencontrées entre la VM et le poste physique (hostname, Secure Boot, partitionnement, réseau).
+- **[Journal d'installation et de configuration](/install-log.md)** complet, étape par étape, inclut un chapitre dédié aux différences rencontrées entre la VM et le poste physique (hostname, Secure Boot, partitionnement, réseau).
 
 **Suivi d'avancement** — une étape n'est cochée qu'une fois testée et validée en conditions réelles, pas seulement documentée :
 
@@ -39,7 +40,7 @@
 | EndeavourOS | ✅ | ⬜ |
 | Terminal (Kitty) | ✅ | ⬜ |
 | Navigateur (Google Chrome + OperaGX) | ✅ | ⬜ |
-| Mirrors (Reflector) | ⬜ | ⬜ |
+| Mirrors (Reflector) | ✅ | ⬜ |
 | ZRAM (zram-generator) | ⬜ | ⬜ |
 | Maintenance (FullUpdate + CheckDKMS + Clean) | ⬜ | ⬜ |
 | Snapshots (Timeshift + Snapper + Grub-BTRFS) | ⬜ | ⬜ |
@@ -67,8 +68,7 @@
 | Nmap | dépôts officiels (nmap) | — |
 | SSH | dépôts officiels (openssh) | — |
 | Git | dépôts officiels (git) | — |
-| Google Chrome | AUR (google-chrome) | — |
-| OperaGx | AUR (opera-gx) | — |
+| Firefox | dépôt officiels (firefox) | — |
 
 ## `> ./architecture.sh`
 
@@ -77,7 +77,7 @@
 ```
 win-to-arch/
 ├── README.md                       # ce document
-├── install_guide.md                # guide d'installation complet, étape par étape
+├── install-log.md                  # journal d'installation et de configuration, étape par étape
 └── configuration/
     ├── terminal-config.md          # Kitty + Starship + fastfetch
     ├── maintenance.md              # alias FullUpdate / CheckDKMS / Clean

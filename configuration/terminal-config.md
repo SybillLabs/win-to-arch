@@ -18,12 +18,13 @@ sudo pacman -S ttf-jetbrains-mono-nerd
 ```bash
 kitty +kitten themes
 ```
-> **Remarque :** ouvre un sélecteur interactif dans le terminal, recherche possible par nom (taper `cyberpunk`), aperçu en direct avant validation. Le thème choisi est automatiquement écrit dans `~/.config/kitty/current-theme.conf` et référencé depuis `kitty.conf` via `include current-theme.conf`.
+> **Remarque :** ouvre un sélecteur interactif dans le terminal, recherche possible par nom (exemple : `cyberpunk`), aperçu en direct avant validation. Le thème choisi est automatiquement écrit dans `~/.config/kitty/current-theme.conf` et référencé depuis `kitty.conf` via `include current-theme.conf`.
 
 - **Ajustements manuels après sélection du thème**
 ```bash
 nano ~/.config/kitty/kitty.conf
 ```
+- **Contenu du fichier `kitty.conf`**
 ```conf
 # BEGIN_KITTY_THEME
 # Cyberpunk
@@ -56,6 +57,7 @@ sudo pacman -S starship
 starship preset nerd-font-symbols -o ~/.config/starship.toml
 nano ~/.config/starship.toml
 ```
+- **Contenu du fichier `starship.toml`**
 ```toml
 format = """
 $os\
@@ -108,6 +110,7 @@ error_symbol = "[➜](bold #ff005c)"
 ```bash
 nano ~/.bashrc
 ```
+- **Ajout de la ligne suivante à la fin du fichier**
 ```bash
 eval "$(starship init bash)"
 ```
@@ -122,6 +125,7 @@ sudo pacman -S fastfetch
 ```bash
 nano ~/.bashrc
 ```
+- **Ajout de la ligne suivante à la fin du fichier**
 ```bash
 fastfetch
 ```
@@ -134,3 +138,19 @@ starship --version
 fastfetch --version
 ```
 > **Résultat attendu :** ouverture d'un nouveau terminal Kitty affichant le thème cyberpunk sélectionné, le logo EndeavourOS via fastfetch, et le prompt Starship personnalisé.
+
+---
+
+<p align="center">  
+    <i>➡️ Back to :<a href="/install_guide.md"> Guide d'installation</a></i>
+</p>
+
+<p align="center">  
+    <i>➡️ Back to :<a href="/README.md"> README</a></i>
+</p>
+
+---
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,100:0d0d0d&fontColor=FF003C&fontSize=50&height=100&width=900&text=%5BEOF%5D&section=footer"/>
+</p>

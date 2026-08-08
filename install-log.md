@@ -1,14 +1,14 @@
 <h1 align="center">
-    🛠️ Guide d'installation : étape par étape
+    🛠️ Journal d'installation et de configuration
 </h1>
 
 ## `> ./vm-vs-pc.sh`
-
 Chaque chapitre de ce guide est exécuté à l'identique sur la VM de validation et sur le poste physique : mêmes commandes, même ordre. Certains points, en revanche, diffèrent nécessairement selon l'environnement d'exécution. Ils sont listés ici plutôt que répétés à chaque chapitre concerné.
 
 | Point | VM (validation) | PC (physique) |
 |---|---|---|
-| Hostname | `sybill_labs-wintoarch` | `cypher_nyx` |
+| Whoami | `sybill-labs` | `sybill-labs` |
+| Hostname | `wintoarch` | `cypher-nyx` |
 | Secure Boot | Désactivé dans les réglages VirtualBox | Désactivé dans le firmware UEFI réel |
 | Partitionnement | Disque virtuel, données non critiques | Disque réel, sauvegarde préalable requise |
 | Réseau | Mode Bridged (nécessaire pour les tests de pare-feu/fail2ban depuis une autre machine) | Connexion réseau réelle du poste (Wi-Fi/Ethernet) |
@@ -20,19 +20,9 @@ Chaque chapitre de ce guide est exécuté à l'identique sur la VM de validation
 > Toute divergence rencontrée en dehors de ce tableau, propre à un chapitre précis, est documentée directement dans la section concernée du guide plutôt qu'ici.
 
 ## `> ./endeavouros-installation.sh`
-
 ISO récupérée depuis [`endeavouros.com/latest-release`](https://endeavouros.com/latest-release/).
 
-**Environnement de bureau** : 
-- KDE Plasma, **retenu comme environnement principal** pour sa légèreté et son niveau de personnalisation, le reste du guide reste applicable avec un autre DE supporté par EndeavourOS, seule cette étape en dépend.
-- XFCE, installé en secours uniquement, pour disposer d'un environnement fonctionnel en cas de problème bloquant sur KDE Plasma, pas destiné à un usage quotidien.
-```bash
-sudo pacman -S xfce4 xfce4-goodies
-sudo pacman -S labwc
-```
-> **Remarque :**   
-- `labwc` installé pour tester une session XFCE en Wayland, qui nécessite un compositeur externe (XFCE n'en fournit pas encore nativement). Session non retenue sur cette VM : l'accélération 3D de VirtualBox reste trop limitée pour initialiser correctement le rendu, même une fois activée dans les paramètres d'affichage. Session XFCE conservée en X11, stable dans cet environnement.
-- Pour KDE Plasma, utilisation de l'environnement *Wayland* par défaut, cependant pour XFCE, l'environnement *X11* est utilisé par défaut. Le guide reste applicable dans les deux cas.
+**Environnement de bureau** : KDE Plasma, retenu pour sa légèreté et son niveau de personnalisation. Le reste du guide reste applicable avec un autre DE supporté par EndeavourOS, seule cette étape en dépend.
 
 **Choix faits pendant l'installation :**
 - Mise à jour des miroirs via `reflector-simple` dès le menu d'installation, avant même de lancer l'installeur, cohérent avec la démarche appliquée ensuite en post-install (`mirrors-installation.sh`).
@@ -44,25 +34,27 @@ sudo pacman -S labwc
 
 Une fois l'installation terminée : extinction de la VM, retrait de l'ISO, snapshot VirtualBox de l'état post-install avant de poursuivre.
 
-**Choix faits après l'installation :**
-- Affichage du Welcome EndeavourOS au premier démarrage : `eos-welcome --enable` (permanent) ou `eos-welcome --once` (ponctuel).
-- Barre des tâches : translucide, centrée, éviter les fenêtres et ajuster au contenu.
-- Thèmes : personnalisé avec `Sweet KDE` (*eliverlara*) et `Sweet-Mars` (*dans le pack de Sweet KDE*) pour l'écran de démarrage. Configuration appliquée uniquement sur KDE Plasma, environnement de bureau principal, XFCE reste en configuration par défaut puisqu'il n'est utilisé qu'en secours.
-- Fond d'écran : installation de `Smart Video Wallpaper Reborn` (*luis-bocanegra*) pour disposer d'un fond d'écran animé (source en `.mp4`).
+Pour pouvoir afficher le Welcome EndeavourOS, il peut être affiché via `eos-welcome --enable` (permanent) ou `eos-welcome --once` (ponctuel).
 
 ## `> ./terminal-installation.sh`
-
 - Pour cette configuration, le terminal principal retenu est **Kitty**, pour sa légèreté et sa capacité de personnalisation avancée. Il est complété par le prompt **Starship** et l'outil d'affichage système **fastfetch**.
 - Pour l'installation et la configuration de Kitty, Starship et fastfetch, voir le fichier [terminal-config.md](configuration/terminal-config.md).
 - Rendu final attendu sur le thème de **Cyberpunk** (Kitty + Starship + fastfetch).
 
 ## `> ./navigator-installation.sh`
-Opera GX, **retenu comme navigateur principal** pour ses fonctionnalités, et Google Chrome, **installé en complément** pour disposer d'un navigateur Chromium standard, notamment pour les tests de compatibilité web.
-
-- **Installation de Chrome** : `yay -S google-chrome`
-- **Installation d'OperaGX** : `yay -S opera-gx`
+Firefox, **retenu comme navigateur principal** car il est :
+- Open source de bout en bout, contrairement à Chromium et Google Chrome.
+- Wireshark et tcpdump s'intègrent plus proprement avec Firefox pour l'analyse réseau.
+- Dépôt officiels de Firefox sur Arch Linux.
+- **Installation de Firefox** : 
+```bash
+sudo pacman -S firefox
+```
 
 ## `> ./mirrors-installation.sh`
+- Pour cette configuration, les miroirs principaux retenus sont situés en France, Allemagne et Pays-Bas, zones réputées pour leur stabilité et leur proximité réseau.
+- Fichier de configuration des miroirs : [mirrors.md](/configuration/mirrors.md).
+- Utilisation de l'alias `UpdateMirrors` pour mettre à jour la liste des miroirs. A utiliser avant toute mise à jour complète du système (`FullUpdate`), pour éviter les erreurs de synchronisation avec des miroirs obsolètes.
 
 ## `> ./zram-installation.sh`
 
