@@ -38,8 +38,7 @@ Pour pouvoir afficher le Welcome EndeavourOS, il peut être affiché via `eos-we
 
 ## `> ./terminal-installation.sh`
 - Pour cette configuration, le terminal principal retenu est **Kitty**, pour sa légèreté et sa capacité de personnalisation avancée. Il est complété par le prompt **Starship** et l'outil d'affichage système **fastfetch**.
-- Pour l'installation et la configuration de Kitty, Starship et fastfetch, voir le fichier [terminal-config.md](configuration/terminal-config.md).
-- Rendu final attendu sur le thème de **Cyberpunk** (Kitty + Starship + fastfetch).
+- Détail de l'installation et de la configuration : [terminal-config.md](configuration/terminal-config.md).
 
 ## `> ./navigator-installation.sh`
 Firefox, **retenu comme navigateur principal** car il est :
@@ -52,11 +51,14 @@ sudo pacman -S firefox
 ```
 
 ## `> ./mirrors-installation.sh`
+- Pourquoi les miroirs sont importants : sur une rolling release, un miroir en retard peut faire échouer les mises à jour.
 - Pour cette configuration, les miroirs principaux retenus sont situés en France, Allemagne et Pays-Bas, zones réputées pour leur stabilité et leur proximité réseau.
-- Fichier de configuration des miroirs : [mirrors.md](/configuration/mirrors.md).
 - Utilisation de l'alias `UpdateMirrors` pour mettre à jour la liste des miroirs. A utiliser avant toute mise à jour complète du système (`FullUpdate`), pour éviter les erreurs de synchronisation avec des miroirs obsolètes.
+- Détail de l'installation et de la configuration : [mirrors.md](/configuration/mirrors.md).
 
 ## `> ./zram-installation.sh`
+- Pourquoi utiliser `zram` : repousse le seuil de déclenchement d'un `OOM-kill` (Out of Memory kill) en offrant un espace de swap compressé, plus rapide qu'un swap classique sur disque. Filet de sécurité supplémentaire, pas une garantie absolue si la pression mémoire dépasse aussi cette marge.
+- Détail de l'installation et de la configuration : [zram.md](/configuration/zram.md).
 
 ## `> ./maintenance.sh`
 

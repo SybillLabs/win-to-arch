@@ -114,6 +114,10 @@ nano ~/.bashrc
 ```bash
 eval "$(starship init bash)"
 ```
+- **Application de la modification**
+```bash
+source ~/.bashrc
+```
 
 ## `> ./fastfetch-installation.sh`
 
@@ -129,6 +133,10 @@ nano ~/.bashrc
 ```bash
 fastfetch
 ```
+- **Application de la modification**
+```bash
+source ~/.bashrc
+```
 
 ## `> ./terminal-verification.sh`
 
@@ -142,7 +150,7 @@ fastfetch --version
 ---
 
 <p align="center">  
-    <i>➡️ Back to :<a href="/install_guide.md"> Guide d'installation</a></i>
+    <i>➡️ Back to :<a href="/install-log.md"> Journal d'installation</a></i>
 </p>
 
 <p align="center">  

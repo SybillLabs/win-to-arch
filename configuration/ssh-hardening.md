@@ -86,7 +86,7 @@ ssh -o PubkeyAuthentication=no localhost
 ---
 
 <p align="center">  
-    <i>➡️ Back to :<a href="/install_guide.md"> Guide d'installation</a></i>
+    <i>➡️ Back to :<a href="/install-log.md"> Journal d'installation</a></i>
 </p>
 
 <p align="center">  
