@@ -41,7 +41,7 @@
 | Terminal (Kitty) | ✅ | ⬜ |
 | Navigateur (Google Chrome + OperaGX) | ✅ | ⬜ |
 | Mirrors (Reflector) | ✅ | ⬜ |
-| ZRAM (zram-generator) | ⬜ | ⬜ |
+| ZRAM (zram-generator) | ✅ | ⬜ |
 | Maintenance (FullUpdate + CheckDKMS + Clean) | ⬜ | ⬜ |
 | Snapshots (Timeshift + Snapper + Grub-BTRFS) | ⬜ | ⬜ |
 | SSH Installation | ⬜ | ⬜ |
