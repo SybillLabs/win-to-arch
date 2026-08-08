@@ -1,5 +1,5 @@
 <h1 align="center">
-    🛠️ Guide d'installation : SSHD
+    🛠️ Installation et configuration : SSHD
 </h1>
 
 ## `> ./sshd-installation.sh`

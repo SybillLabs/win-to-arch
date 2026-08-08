@@ -1,5 +1,5 @@
 <h1 align="center">
-    ⚙️ Guide de configuration : Firewall
+    🛠️ Installation et configuration : Firewall (UFW & Fail2ban)
 </h1>
 
 ## `> ./ufw-installation.sh`

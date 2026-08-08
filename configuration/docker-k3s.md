@@ -1,5 +1,5 @@
 <h1 align="center">
-    🛠️ Guide d'installation : Docker & K3S
+    🛠️ Installation et configuration : Docker & K3S
 </h1>
 
 ## `> ./docker-installation.sh`

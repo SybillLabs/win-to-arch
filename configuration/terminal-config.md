@@ -1,5 +1,5 @@
 <h1 align="center">
-    🛠️ Guide d'installation : Kitty, Starship & Fastfetch
+    🛠️ Installation et configuration : Kitty, Starship & Fastfetch
 </h1>
 
 ## `> ./kitty-installation.sh`

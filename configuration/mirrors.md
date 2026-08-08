@@ -1,5 +1,5 @@
 <h1 align="center">
-    🛠️ Guide d'installation : Mirrors update
+    🛠️ Installation et configuration : Reflector
 </h1>
 
 ## `> ./reflector-installation.sh`
